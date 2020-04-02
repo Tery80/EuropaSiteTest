@@ -21,6 +21,7 @@ public class EuropaEuTest {
 
     @Test
     public void europaEU() {
+        long startTime = System.currentTimeMillis();
         System.setProperty("webdriver.chrome.driver", "c:/temp1/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -39,7 +40,7 @@ public class EuropaEuTest {
 
         LOGGER.info("Looking for a Latvian Language");
         for (int i = 0; i<24;i++){
-            if (driver.findElement(LANGUAGE_ELEMENT).getText()=="latviešu "){
+            if (driver.findElement(LANGUAGE_ELEMENT).getText().equals("latviešu ")){ // найти и исправить ошибку
                 driver.findElement(LANGUAGE_ELEMENT).click();
             }
         }
@@ -51,7 +52,11 @@ public class EuropaEuTest {
 
         LOGGER.info("Check that there are at least 1 article");
         List<WebElement> articles = driver.findElements(ARTICLE);
-        Assertions.assertTrue(articles.size()>0, "There are no articles at all");
+        Assertions.assertTrue(articles.size()>0, "There are no articles at all, not 1");
+        driver.close();
+        long finishTime = System.currentTimeMillis();
+        LOGGER.info("Display working time in seconds");
+        TimeUnit.MILLISECONDS.toSeconds(finishTime-startTime);
     }
 
 }
