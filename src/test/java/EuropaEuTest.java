@@ -11,8 +11,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static java.lang.System.getProperty;
-
 public class EuropaEuTest {
     private final By LANGUAGES = By.xpath(".//li[contains(@id,'lang')]");
     private final By LATVIAN = By.id("lang_lv");
