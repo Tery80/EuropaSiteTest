@@ -56,7 +56,7 @@ public class EuropaEuTest {
         System.out.println("There are " + articles.size() + " articles");
         driver.close();
         long finishTime = System.currentTimeMillis();
-        LOGGER.info("Display working time in seconds");
+        LOGGER.info("Display working time in seconds"); 
         System.out.println("Test has been worked " + TimeUnit.MILLISECONDS.toSeconds(finishTime - startTime));
     }
 }
