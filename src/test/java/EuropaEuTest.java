@@ -51,9 +51,7 @@ public class EuropaEuTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         LOGGER.info("At Input field set text iestāde, and search by that");
-        // driver.findElement(SEARCH_FIELD).click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.findElement(SEARCH_FIELD).sendKeys("iestade");
+        driver.findElement(SEARCH_FIELD).sendKeys("iestāde");
         driver.findElement(SEARCH).click();
 
         LOGGER.info("Check that there are at least 1 article");
