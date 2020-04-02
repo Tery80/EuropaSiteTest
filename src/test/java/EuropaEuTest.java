@@ -41,8 +41,8 @@ public class EuropaEuTest {
 
         LOGGER.info("Check if age contains 24 languages");
         List<WebElement> languagesElements = driver.findElements(LANGUAGES);
-        Assertions.assertEquals(languagesElements.size(),24,"Languages amount is not 24");
-// указать размер окна
+        Assertions.assertEquals(languagesElements.size(), 24, "Languages amount is not 24");
+
         LOGGER.info("Looking for a Latvian Language");
 
         driver.findElement(LATVIAN).click();
@@ -51,19 +51,19 @@ public class EuropaEuTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         LOGGER.info("At Input field set text iestāde, and search by that");
-       // driver.findElement(SEARCH_FIELD).click();
+        // driver.findElement(SEARCH_FIELD).click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(SEARCH_FIELD).sendKeys("iestade");
         driver.findElement(SEARCH).click();
 
         LOGGER.info("Check that there are at least 1 article");
         List<WebElement> articles = driver.findElements(ARTICLE);
-        Assertions.assertTrue(articles.size()>0, "There are no articles at all, not 1");
-        System.out.println("There are "+ articles.size() + " articles");
+        Assertions.assertTrue(articles.size() > 0, "There are no articles at all, not 1");
+        System.out.println("There are " + articles.size() + " articles");
         driver.close();
         long finishTime = System.currentTimeMillis();
         LOGGER.info("Display working time in seconds");
-        System.out.println("Test has been worked " + TimeUnit.MILLISECONDS.toSeconds(finishTime-startTime));
+        System.out.println("Test has been worked " + TimeUnit.MILLISECONDS.toSeconds(finishTime - startTime));
     }
 
 }
