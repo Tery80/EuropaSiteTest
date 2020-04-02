@@ -7,17 +7,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class EuropaEuTest {
     private final By LANGUAGES = By.xpath(".//li[contains(@id,'lang')]");
     private final By LATVIAN = By.id("lang_lv");
-    private final By SEARCH_FIELD = By.xpath(".//input[@id='search']");
+    private final By SEARCH_FIELD = By.id("search");
     private final By SEARCH = By.xpath(".//input[contains(@class, 'btn-search')]");
     private final By ARTICLE = By.xpath(".//div[@class='res-detail']");
-
     private final Logger LOGGER = LogManager.getLogger(EuropaEuTest.class);
     WebDriver driver;
 
@@ -27,7 +25,7 @@ public class EuropaEuTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--window-size=1920,1080");
-        System.setProperty("webdriver.chrome.driver", "c:/temp1/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "d:/temp/chromedriver.exe");
 
         driver = new ChromeDriver(options);
 
@@ -44,10 +42,8 @@ public class EuropaEuTest {
         Assertions.assertEquals(languagesElements.size(), 24, "Languages amount is not 24");
 
         LOGGER.info("Looking for a Latvian Language");
-
         driver.findElement(LATVIAN).click();
-
-
+        LOGGER.info("Waiting 5 sec while loading");
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         LOGGER.info("At Input field set text iestāde, and search by that");
@@ -63,5 +59,4 @@ public class EuropaEuTest {
         LOGGER.info("Display working time in seconds");
         System.out.println("Test has been worked " + TimeUnit.MILLISECONDS.toSeconds(finishTime - startTime));
     }
-
 }
