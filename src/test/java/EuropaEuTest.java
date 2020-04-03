@@ -17,6 +17,7 @@ public class EuropaEuTest {
     private final By SEARCH = By.xpath(".//input[contains(@class, 'btn-search')]");
     private final By ARTICLE = By.xpath(".//div[@class='res-detail']");
     private final Logger LOGGER = LogManager.getLogger(EuropaEuTest.class);
+    private final String CHROME_DRIVER_PATH = "c:/temp1/chromedriver.exe";
     WebDriver driver;
 
     @Test
@@ -25,7 +26,7 @@ public class EuropaEuTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--window-size=1920,1080");
-        System.setProperty("webdriver.chrome.driver", "d:/temp/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
 
         driver = new ChromeDriver(options);
 
@@ -47,6 +48,7 @@ public class EuropaEuTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         LOGGER.info("At Input field set text iestāde, and search by that");
+        Assertions.assertTrue(driver.findElement(SEARCH_FIELD).isDisplayed(), "There are no Search field");
         driver.findElement(SEARCH_FIELD).sendKeys("iestāde");
         driver.findElement(SEARCH).click();
 
@@ -57,6 +59,6 @@ public class EuropaEuTest {
         driver.close();
         long finishTime = System.currentTimeMillis();
         LOGGER.info("Display working time in seconds"); 
-        System.out.println("Test has been worked " + TimeUnit.MILLISECONDS.toSeconds(finishTime - startTime));
+        System.out.println("Test has been worked " + TimeUnit.MILLISECONDS.toSeconds(finishTime - startTime) + " seconds");
     }
 }
